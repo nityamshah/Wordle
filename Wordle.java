@@ -1,76 +1,13 @@
 import java.util.*;
-/*
- * File: Wordle.java
- * -----------------
- * This module is the starter file for the Wordle assignment.
- * BE SURE TO UPDATE THIS COMMENT WHEN YOU COMPLETE THE CODE.
- */
 
 public class Wordle {
 
    public void run() {
       gw = new WordleGWindow();
-      System.out.println(THEWORD);
-      
-      /*
-      String word = words[(int)(Math.random()*words.length)];
-      for (int x = 0; x < word.length(); x++){
-         String letter = word.substring(x, x+1);
-         gw.setSquareLetter(0, x, letter);
-      }
-      */
+      System.out.println(THEWORD); //to see the word for degbugging
         
       gw.addEnterListener((s) -> enterAction(s));
    }
-
-/*
- * Called when the user hits the RETURN key or clicks the ENTER button,
- * passing in the string of characters on the current row.
- */
-
-/* WORKING VERSION EXCEPT THAT ONE PART
-   public void enterAction(String s) {
-      boolean realWord = false;
-      String lower = s.toLowerCase();
-      String upper = s.toUpperCase();
-      for (String x : WordleDictionary.FIVE_LETTER_WORDS){
-         if (x.equals(lower)){
-            realWord = true;
-         }
-      }
-      if (realWord){
-         if (lower.equals(THEWORD)){
-            for (int x = 0; x < lower.length(); x++){
-                gw.setSquareColor(gw.getCurrentRow(), x, WordleGWindow.CORRECT_COLOR);
-                gw.setKeyColor(upper.substring(x,x+1), WordleGWindow.CORRECT_COLOR);
-            }
-            gw.showMessage("Correct Word.");
-         }
-         else {
-            for (int x = 0; x < lower.length(); x++){
-               //color sqaures and keys
-               if (lower.substring(x,x+1).equals(THEWORD.substring(x, x+1))){
-                  gw.setSquareColor(gw.getCurrentRow(), x, WordleGWindow.CORRECT_COLOR);
-                  gw.setKeyColor(upper.substring(x,x+1), WordleGWindow.CORRECT_COLOR);
-               }
-               else if (THEWORD.indexOf(lower.substring(x, x+1)) != -1){
-                  gw.setSquareColor(gw.getCurrentRow(), x, WordleGWindow.PRESENT_COLOR);
-                  gw.setKeyColor(upper.substring(x,x+1), WordleGWindow.PRESENT_COLOR);
-               }
-               else if (THEWORD.indexOf(lower.substring(x, x+1)) == -1){
-                  gw.setSquareColor(gw.getCurrentRow(), x, WordleGWindow.MISSING_COLOR );
-                  gw.setKeyColor(upper.substring(x,x+1), WordleGWindow.MISSING_COLOR);
-               }
-            }
-            gw.setCurrentRow(gw.getCurrentRow() + 1);
-         }
-      }
-      else {
-         gw.showMessage("Not in word list.");
-      }
-        
-   }
-*/
    
    //the way that takes niche scenarios into account
    //array of THEWORD, go through and make green letters green, then cross them off the list. then go through guess again and if its not green and in there then yellow, else gray
